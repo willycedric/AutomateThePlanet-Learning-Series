@@ -52,6 +52,26 @@ namespace FluentPageObjectPattern.Pages.BingMainPage
             }
         }
 
+        /**
+         * Bing search Result count 
+         */
+        public IWebElement SearchResultCount
+        {
+            get
+            {
+                return Browser.FindElement(By.XPath("//*[@id='b_tween']/span[1]"));
+            }
+        }
+
+        public IWebElement SearchTopResult
+        {
+            get
+            {
+                
+                return Browser.FindElement(By.ClassName(" b_topTitle"));
+            }
+        }
+
         public SelectElement Sizes
         {
             get

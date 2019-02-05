@@ -13,7 +13,7 @@
 // <site>http://automatetheplanet.com/</site>
 
 using FluentPageObjectPattern.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace FluentPageObjectPattern.Pages.BingMainPage
 {
@@ -22,6 +22,18 @@ namespace FluentPageObjectPattern.Pages.BingMainPage
         public BingMainPage ResultsCount(string expectedCount)
         {
             Assert.IsTrue(Map.ResultsCountDiv.Text.Contains(expectedCount), "The results DIV doesn't contains the specified text.");
+            return PageInstance;
+        }
+
+        public BingMainPage SearchResultsCount(string expectedCount)
+        {
+            Assert.IsTrue(Map.SearchResultCount.Text.Contains(expectedCount), " The search results match the specified text.");
+            return PageInstance;
+        }
+
+        public BingMainPage SearchTopResult(string expectedResult)
+        {
+            Assert.IsTrue(Map.SearchTopResult.Text.Contains(expectedResult), " The search results match the specified text.");
             return PageInstance;
         }
     }

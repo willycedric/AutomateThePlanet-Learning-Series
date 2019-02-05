@@ -13,41 +13,59 @@
 // <site>http://automatetheplanet.com/</site>
 
 using FluentPageObjectPattern.Enums;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace FluentPageObjectPattern
 {
-    [TestClass]
+    [TestFixture]
     public class FluentBingTests
     { 
-        [TestInitialize]
+        [SetUp]
         public void SetupTest()
         {
             Core.Driver.StartBrowser();
         }
 
-        [TestCleanup]
+        [TearDown]
         public void TeardownTest()
         {
             Core.Driver.StopBrowser();
         }
 
-        [TestMethod]
-        public void SearchForImageFuent()
-        {
-            Pages
-                                   .BingMainPage
-                                   .BingMainPage
-                                   .Instance
-                                   .Navigate()
-                                   .Search("facebook")
-                                   .ClickImages()
-                                   .SetSize(Sizes.Large)
-                                   .SetColor(Colors.BlackWhite)
-                                   .SetTypes(Types.Clipart)
-                                   .SetPeople(People.All)
-                                   .SetDate(Dates.PastYear)
-                                   .SetLicense(Licenses.All);
-        }
+        [TestCase("Login")]
+        public void UserShouldbeAbleToReachTheLoginPage(string expectedDescription) => Pages.
+                Login
+                .LoginPage
+                .Instance
+                    .Navigate()
+                 .Validate()
+                    .LoginPageDescription(expectedDescription: expectedDescription);
+
+        [TestCase("username", "password", "This is a demo website, which act as a mock site for trying out different automation tools")]
+        public void UserShouldBeAbleToLoginWithValideCredentials(string userName, string userPassword, string homeHeader)=> Pages.
+                Login
+                .LoginPage
+                .Instance
+                    .Navigate()
+                    .EnterUserName(userName:userName)
+                    .EnterUserPassword(userPassword: userPassword)
+                    .Login()
+                 .Validate()
+                    .CheckHomeHeader(expectedHeader: homeHeader);
+        
+
+        [TestCase("username", "password", "Login")]
+        public void UserShouldBeAbleToLogout(string userName, string userPassword, string loginDescription) => Pages.
+                Login
+                .LoginPage
+                .Instance
+                    .Navigate()
+                    .EnterUserName(userName: userName)
+                    .EnterUserPassword(userPassword: userPassword)
+                    .Login()
+                    .Logout()
+                 .Validate()
+                    .CheckThatUserIsSuccessfullyLogout(expectedDescription: loginDescription);
+
     }
 }

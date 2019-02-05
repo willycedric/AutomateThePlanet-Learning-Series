@@ -13,6 +13,8 @@
 // <site>http://automatetheplanet.com/</site>
 
 using System;
+using System.IO;
+using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -59,6 +61,7 @@ namespace FluentPageObjectPattern.Core
 
         public static void StartBrowser(BrowserTypes browserType = BrowserTypes.Firefox, int defaultTimeOut = 30)
         {
+            string DriverPath =  Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             switch (browserType)
             {
                 case BrowserTypes.Firefox:
