@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentPageObjectPattern.Core;
 using OpenQA.Selenium;
 
-namespace FluentPageObjectPattern.Pages.Home
+namespace FluentPageObjectPattern.Pages.Demo.Home
 {
     public class HomePageElementMap: BasePageElementMap
     {

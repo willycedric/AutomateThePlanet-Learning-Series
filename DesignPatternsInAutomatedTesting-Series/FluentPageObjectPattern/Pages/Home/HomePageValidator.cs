@@ -2,11 +2,11 @@
 using NUnit.Framework;
 using FluentPageObjectPattern.Core;
 
-namespace FluentPageObjectPattern.Pages.Home
+namespace FluentPageObjectPattern.Pages.Demo.Home
 {
-    class HomePageValidator: BasePageValidator<HomePage, HomePageElementMap, HomePageValidator>
+    class HomePageValidator: BasePageValidator<DemoHomePage, HomePageElementMap, HomePageValidator>
     {
-        public HomePage CheckHomeHeader(string expectedHeader)
+        public DemoHomePage CheckHomeHeader(string expectedHeader)
         {
             Map.HomePageDescription.Text.ToLower().Should().Be(expectedHeader.ToLower());
             return PageInstance;

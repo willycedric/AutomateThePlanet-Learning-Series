@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentPageObjectPattern.Core;
-using FluentPageObjectPattern.Pages.Home;
+using FluentPageObjectPattern.Pages.Demo.Home;
 
 namespace FluentPageObjectPattern.Pages.Login
 {
@@ -30,11 +30,11 @@ namespace FluentPageObjectPattern.Pages.Login
             return this as LoginPage;
         }
 
-        public HomePage Login()
+        public DemoHomePage Login()
         {
             
             Map.LoginButton.Click();
-            return  new HomePage();
+            return  new DemoHomePage();
         }
 
     }

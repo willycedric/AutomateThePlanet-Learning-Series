@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using FluentPageObjectPattern.Core;
 using FluentPageObjectPattern.Pages.Login;
 
-namespace FluentPageObjectPattern.Pages.Home
+namespace FluentPageObjectPattern.Pages.Demo.Home
 {
-    class HomePage: BaseFluentPageSingleton<HomePage, HomePageElementMap, HomePageValidator>
+    class DemoHomePage: BaseFluentPageSingleton<DemoHomePage, HomePageElementMap, HomePageValidator>
     {
         public LoginPage Logout()
         {
